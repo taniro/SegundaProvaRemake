@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="tads.eaj.ufrn.segundaprova.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_alteraFragment"
+            app:destination="@id/alteraFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_detalhesFragment"
+            app:destination="@id/detalhesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cadastraFragment"
+        android:name="tads.eaj.ufrn.segundaprova.CadastraFragment"
+        android:label="Cadastrar"
+        tools:layout="@layout/fragment_cadastra" >
+        <action
+            android:id="@+id/action_cadastraFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/alteraFragment"
+        android:name="tads.eaj.ufrn.segundaprova.AlteraFragment"
+        android:label="Alterar"
+        tools:layout="@layout/fragment_altera">
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_alteraFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalhesFragment"
+        android:name="tads.eaj.ufrn.segundaprova.DetalhesFragment"
+        android:label="Detalhes"
+        tools:layout="@layout/fragment_detalhes">
+        <argument
+            android:name="id"
+            app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/sobreFragment"
+        android:name="tads.eaj.ufrn.segundaprova.SobreFragment"
+        android:label="Sobre"
+        tools:layout="@layout/fragment_sobre" />
+</navigation>

@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">SegundaProva</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nome">Nome:</string>
+    <string name="sobrenome">Sobrenome:</string>
+    <string name="idade">Idade:</string>
+    <string name="sexo">Sexo:</string>
+    <string name="altura">Altura:</string>
+    <string name="peso">Peso:</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="alterar">Alterar</string>
+    <string name="taniro">Taniro</string>
+    <string name="sobre">Sobre</string>
+    <string name="ajuda">Ajuda</string>
+    <string name="ajuda_from_home">Ajuda from HOME</string>
+    <string name="ajuda_from_cadastro">Ajuda cadastro</string>
+    <string name="ajuda_from_detalhes">Ajuda detalhes</string>
+    <string name="ajuda_from_altera">Ajuda Altera</string>
+</resources>

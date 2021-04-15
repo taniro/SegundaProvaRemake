@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import tads.eaj.ufrn.segundaprova.SegundaProvaApplication
 import tads.eaj.ufrn.segundaprova.R
 import tads.eaj.ufrn.segundaprova.databinding.FragmentCadastraBinding
 import tads.eaj.ufrn.segundaprova.ui.dialog.AjudaDialogFragment
@@ -19,7 +20,8 @@ class CadastraFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_cadastra, container, false)
-        viewModel = ViewModelProvider(this).get(CadastraFragmentViewModel::class.java)
+        val viewModelFactory = CadastraFragmentViewModel.Factory((requireActivity().application as SegundaProvaApplication).pessoaRepository)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(CadastraFragmentViewModel::class.java)
         binding.viewModel = viewModel
 
         binding.lifecycleOwner = this
@@ -33,12 +35,6 @@ class CadastraFragment : Fragment() {
                 viewModel.onCadastroPessoaComplete()
             }
         })
-
-        /*
-        binding.cadastraButton.setOnClickListener {
-            viewModel.cadastroPessoa()
-
-        }*/
 
         return binding.root
     }

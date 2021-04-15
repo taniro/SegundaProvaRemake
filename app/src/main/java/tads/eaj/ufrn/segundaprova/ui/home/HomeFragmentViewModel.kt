@@ -1,29 +1,20 @@
 package tads.eaj.ufrn.segundaprova.ui.home
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import tads.eaj.ufrn.segundaprova.repository.PessoaRepository
+import androidx.lifecycle.*
+import tads.eaj.ufrn.segundaprova.model.Pessoa
+import tads.eaj.ufrn.segundaprova.database.repository.PessoaRepository
 
-class HomeFragmentViewModel(application: Application) : AndroidViewModel(application) {
+class HomeFragmentViewModel private constructor(pessoaRepository: PessoaRepository) : ViewModel() {
 
-    private val pessoaRepository = PessoaRepository(application)
-    var list = pessoaRepository.listAll
+    var list:LiveData<List<Pessoa>> = pessoaRepository.listAll.asLiveData()
 
-    /*
-    fun getPessoa(db:PessoaDatabase){
-        viewModelScope.launch {
-            Log.i("TESTE", db.pessoaDao().listById(2L).toString())
+    class Factory(val pessoaRepository:PessoaRepository) : ViewModelProvider.Factory {
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(HomeFragmentViewModel::class.java)) {
+                return HomeFragmentViewModel(pessoaRepository) as T
+            }
+            throw IllegalArgumentException("Unknown ViewModel class")
         }
-    }*/
-
-
-    /*
-    suspend fun listById(id:Long, db:PessoaDatabase):Pessoa {
-        lateinit var p :Pessoa
-        withContext(Dispatchers.Default) {
-            p = db.pessoaDao().listById(id)
-        }
-        return p;
-    }*/
-
+    }
 }
+

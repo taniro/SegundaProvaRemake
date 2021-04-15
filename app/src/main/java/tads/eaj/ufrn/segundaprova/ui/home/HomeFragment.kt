@@ -7,7 +7,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import tads.eaj.ufrn.segundaprova.util.MyRecyclerViewClickListener
+import tads.eaj.ufrn.segundaprova.SegundaProvaApplication
+import tads.eaj.ufrn.segundaprova.util.CustomRecyclerViewTouchListener
 import tads.eaj.ufrn.segundaprova.ui.home.adapter.PessoaAdapter
 import tads.eaj.ufrn.segundaprova.R
 import tads.eaj.ufrn.segundaprova.databinding.FragmentHomeBinding
@@ -22,20 +23,19 @@ class HomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
-        viewModel = ViewModelProvider(this).get(HomeFragmentViewModel::class.java)
+        val viewModelFactory = HomeFragmentViewModel.Factory((requireActivity().application as SegundaProvaApplication).pessoaRepository)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(HomeFragmentViewModel::class.java)
 
         val adapter = PessoaAdapter()
         binding.recyclerPessoa.adapter = adapter
 
 
         viewModel.list.observe(viewLifecycleOwner, Observer {
-            //adapter.list = it
-            //adapter.notifyDataSetChanged()
             adapter.submitList(it)
         })
 
-        binding.recyclerPessoa.addOnItemTouchListener(MyRecyclerViewClickListener(binding.recyclerPessoa, object :
-            MyRecyclerViewClickListener.OnItemClickListener {
+        binding.recyclerPessoa.addOnItemTouchListener(CustomRecyclerViewTouchListener(binding.recyclerPessoa, object :
+            CustomRecyclerViewTouchListener.OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
                 Navigation.findNavController(view).navigate(HomeFragmentDirections.actionHomeFragmentToDetalhesFragment(adapter.currentList[position].id))
             }

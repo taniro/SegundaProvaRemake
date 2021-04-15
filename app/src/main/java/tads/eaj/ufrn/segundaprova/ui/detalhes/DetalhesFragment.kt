@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import tads.eaj.ufrn.segundaprova.SegundaProvaApplication
 import tads.eaj.ufrn.segundaprova.R
 import tads.eaj.ufrn.segundaprova.databinding.FragmentDetalhesBinding
 import tads.eaj.ufrn.segundaprova.ui.dialog.AjudaDialogFragment
@@ -20,9 +21,9 @@ class DetalhesFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detalhes, container, false)
-        val viewModelFactory = DetalhesFragmentViewModel.DetalhesFragmentViewModelFactory(
+        val viewModelFactory = DetalhesFragmentViewModel.Factory(
             args.id,
-            requireActivity().application
+            (requireActivity().application as SegundaProvaApplication).pessoaRepository
         )
         viewModel = ViewModelProvider(this, viewModelFactory ).get(DetalhesFragmentViewModel::class.java)
 

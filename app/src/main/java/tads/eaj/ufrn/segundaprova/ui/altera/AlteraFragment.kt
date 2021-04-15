@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
+import tads.eaj.ufrn.segundaprova.SegundaProvaApplication
 import tads.eaj.ufrn.segundaprova.R
 import tads.eaj.ufrn.segundaprova.databinding.FragmentAlteraBinding
 import tads.eaj.ufrn.segundaprova.ui.dialog.AjudaDialogFragment
@@ -26,9 +27,9 @@ class AlteraFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        val viewModelFactory = AlteraFragmentViewModel.AlteraFragmentViewModelFactory(
+        val viewModelFactory = AlteraFragmentViewModel.Factory(
             args.id,
-            requireActivity().application
+            (requireActivity().application as SegundaProvaApplication).pessoaRepository
         )
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_altera, container, false)
         viewModel = ViewModelProvider(this, viewModelFactory).get(AlteraFragmentViewModel::class.java)
@@ -46,14 +47,6 @@ class AlteraFragment : Fragment() {
                 viewModel.onAlteraPessoaComplete()
             }
         })
-
-        /*
-        binding.alteraButton.setOnClickListener {
-            viewModel.alteraPessoa()
-            Navigation.findNavController(it).navigate(AlteraFragmentDirections.actionAlteraFragmentToHomeFragment())
-        }
-         */
-
 
         return binding.root
     }

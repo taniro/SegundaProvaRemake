@@ -1,9 +1,10 @@
-package tads.eaj.ufrn.segundaprova.repository
+package tads.eaj.ufrn.segundaprova.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import tads.eaj.ufrn.segundaprova.database.dao.PessoaDao
 import tads.eaj.ufrn.segundaprova.model.Pessoa
 
 @Database(entities = [Pessoa::class], version = 1)

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="tads.eaj.ufrn.segundaprova.AlteraFragmentViewModel" />
+            type="tads.eaj.ufrn.segundaprova.ui.altera.AlteraFragmentViewModel" />
 
     </data>
 
@@ -14,7 +14,7 @@
         android:id="@+id/alteraLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".AlteraFragment">
+        tools:context=".ui.altera.AlteraFragment">
 
         <TextView
             android:id="@+id/alteraNomeTV"
@@ -156,6 +156,7 @@
 
         <Button
             android:id="@+id/alteraButton"
+            android:onClick="@{() -> viewModel.alteraPessoa()}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"

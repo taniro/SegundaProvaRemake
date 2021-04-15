@@ -1,4 +1,4 @@
-package tads.eaj.ufrn.segundaprova
+package tads.eaj.ufrn.segundaprova.ui.dialog
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle

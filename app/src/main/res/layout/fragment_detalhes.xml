@@ -6,14 +6,14 @@
     <data>
         <variable
             name="viewModel"
-            type="tads.eaj.ufrn.segundaprova.DetalhesFragmentViewModel" />
+            type="tads.eaj.ufrn.segundaprova.ui.detalhes.DetalhesFragmentViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/detalhesLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".DetalhesFragment">
+        tools:context=".ui.detalhes.DetalhesFragment">
 
         <TextView
             android:id="@+id/detalhesNomeTV"

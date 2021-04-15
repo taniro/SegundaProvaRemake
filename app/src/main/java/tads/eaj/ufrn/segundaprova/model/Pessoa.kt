@@ -1,4 +1,4 @@
-package tads.eaj.ufrn.segundaprova
+package tads.eaj.ufrn.segundaprova.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

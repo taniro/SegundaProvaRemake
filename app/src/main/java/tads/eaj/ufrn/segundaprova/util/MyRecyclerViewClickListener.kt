@@ -1,7 +1,5 @@
-package tads.eaj.ufrn.segundaprova
+package tads.eaj.ufrn.segundaprova.util
 
-import android.content.Context
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
@@ -9,7 +7,7 @@ import android.view.GestureDetector
 
 
 
-class MyRecyclerViewClickListener(val view:RecyclerView, val listener:OnItemClickListener) : RecyclerView.OnItemTouchListener  {
+class MyRecyclerViewClickListener(val view:RecyclerView, val listener: OnItemClickListener) : RecyclerView.OnItemTouchListener  {
 
     var myGestureDetector: GestureDetector
 

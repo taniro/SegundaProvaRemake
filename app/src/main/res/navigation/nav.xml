@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="tads.eaj.ufrn.segundaprova.HomeFragment"
+        android:name="tads.eaj.ufrn.segundaprova.ui.home.HomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/cadastraFragment"
-        android:name="tads.eaj.ufrn.segundaprova.CadastraFragment"
+        android:name="tads.eaj.ufrn.segundaprova.ui.cadastra.CadastraFragment"
         android:label="Cadastrar"
         tools:layout="@layout/fragment_cadastra" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/alteraFragment"
-        android:name="tads.eaj.ufrn.segundaprova.AlteraFragment"
+        android:name="tads.eaj.ufrn.segundaprova.ui.altera.AlteraFragment"
         android:label="Alterar"
         tools:layout="@layout/fragment_altera">
         <argument
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/detalhesFragment"
-        android:name="tads.eaj.ufrn.segundaprova.DetalhesFragment"
+        android:name="tads.eaj.ufrn.segundaprova.ui.detalhes.DetalhesFragment"
         android:label="Detalhes"
         tools:layout="@layout/fragment_detalhes">
         <argument
@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/sobreFragment"
-        android:name="tads.eaj.ufrn.segundaprova.SobreFragment"
+        android:name="tads.eaj.ufrn.segundaprova.ui.sobre.SobreFragment"
         android:label="Sobre"
         tools:layout="@layout/fragment_sobre" />
 </navigation>

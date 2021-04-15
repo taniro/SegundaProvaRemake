@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="tads.eaj.ufrn.segundaprova.CadastraFragmentViewModel" />
+            type="tads.eaj.ufrn.segundaprova.ui.cadastra.CadastraFragmentViewModel" />
 
     </data>
 
@@ -14,7 +14,7 @@
         android:id="@+id/cadastraLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".CadastraFragment">
+        tools:context=".ui.cadastra.CadastraFragment">
 
         <TextView
             android:id="@+id/cadastraNomeTV"
@@ -156,6 +156,7 @@
 
         <Button
             android:id="@+id/cadastraButton"
+            android:onClick="@{() -> viewModel.cadastroPessoa()}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"

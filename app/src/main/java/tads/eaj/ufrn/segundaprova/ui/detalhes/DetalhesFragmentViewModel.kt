@@ -1,28 +1,24 @@
-package tads.eaj.ufrn.segundaprova
+package tads.eaj.ufrn.segundaprova.ui.detalhes
 
 import android.app.Application
-import android.os.AsyncTask
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.room.Room
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
+import tads.eaj.ufrn.segundaprova.model.Pessoa
+import tads.eaj.ufrn.segundaprova.repository.PessoaRepository
 
 class DetalhesFragmentViewModel(id:Long, application: Application) : ViewModel() {
-    var pessoa:Pessoa
-
-    private val db:PessoaDatabase by lazy {
-        Room.databaseBuilder(application.applicationContext, PessoaDatabase::class.java, "pessoas.sqlite")
-            .build()
-    }
+    lateinit var pessoa: Pessoa
+    private val pessoaRepository = PessoaRepository(application)
 
     init {
-        pessoa = getPessoa(id, db.pessoaDao())
+        getPessoa(id)
     }
 
-    fun getPessoa(id:Long, pessoaDao:PessoaDao) = GetPessoaAsyncTask(pessoaDao).execute(id).get()
-
-    class GetPessoaAsyncTask(var pessoaDao: PessoaDao) : AsyncTask<Long, Unit, Pessoa>() {
-        override fun doInBackground(vararg params: Long?): Pessoa {
-            return pessoaDao.listById(params[0]!!)
+    fun getPessoa(id:Long){
+        viewModelScope.launch {
+            pessoa = pessoaRepository.listById(id)
         }
     }
 

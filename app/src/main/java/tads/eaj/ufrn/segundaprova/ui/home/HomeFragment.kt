@@ -1,14 +1,17 @@
-package tads.eaj.ufrn.segundaprova
+package tads.eaj.ufrn.segundaprova.ui.home
 
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import tads.eaj.ufrn.segundaprova.util.MyRecyclerViewClickListener
+import tads.eaj.ufrn.segundaprova.ui.home.adapter.PessoaAdapter
+import tads.eaj.ufrn.segundaprova.R
 import tads.eaj.ufrn.segundaprova.databinding.FragmentHomeBinding
+import tads.eaj.ufrn.segundaprova.ui.dialog.AjudaDialogFragment
 
 
 class HomeFragment : Fragment() {
@@ -26,18 +29,19 @@ class HomeFragment : Fragment() {
 
 
         viewModel.list.observe(viewLifecycleOwner, Observer {
-            adapter.list = it
-            adapter.notifyDataSetChanged()
+            //adapter.list = it
+            //adapter.notifyDataSetChanged()
+            adapter.submitList(it)
         })
 
         binding.recyclerPessoa.addOnItemTouchListener(MyRecyclerViewClickListener(binding.recyclerPessoa, object :
             MyRecyclerViewClickListener.OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
-                Navigation.findNavController(view).navigate(HomeFragmentDirections.actionHomeFragmentToDetalhesFragment(adapter.list[position].id))
+                Navigation.findNavController(view).navigate(HomeFragmentDirections.actionHomeFragmentToDetalhesFragment(adapter.currentList[position].id))
             }
 
             override fun onItemLongClick(view: View, position: Int) {
-                Navigation.findNavController(view).navigate(HomeFragmentDirections.actionHomeFragmentToAlteraFragment(adapter.list[position].id))
+                Navigation.findNavController(view).navigate(HomeFragmentDirections.actionHomeFragmentToAlteraFragment(adapter.currentList[position].id))
             }
 
         }))

@@ -1,10 +1,11 @@
-package tads.eaj.ufrn.segundaprova
+package tads.eaj.ufrn.segundaprova.ui.sobre
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import tads.eaj.ufrn.segundaprova.R
 
 class SobreFragment : Fragment() {
     override fun onCreateView(
